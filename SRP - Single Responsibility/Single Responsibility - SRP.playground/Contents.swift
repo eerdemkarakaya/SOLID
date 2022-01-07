@@ -25,18 +25,18 @@ struct EmployeeModel {
     var jobTitle: String
 }
 
-class Factory {
+class EmployeeManager {
     func addEmployee(_ employee: EmployeeModel) {
         print("\(employee.name) Employee added for \(employee.jobTitle) jobTitle.")
-        Log().sendLog("Employee Add")
+        LogManager().sendLog("Employee Add")
     }
     func removeEmployee(_ employee: EmployeeModel) {
         print("\(employee.name) Employee removed from \(employee.jobTitle) jobTitle.")
-        Log().sendLog("Employee Remove")
+        LogManager().sendLog("Employee Remove")
     }
     func updateEmployee(_ employee: EmployeeModel) {
         print("\(employee.name) Employee updated from \(employee.jobTitle) jobTitle.")
-        Log().sendLog("Employee Update")
+        LogManager().sendLog("Employee Update")
     }
     
 // YANLIŞ KULLANIM => Loglama kodlarını sildik ve Log sınıfına taşıdık.
@@ -51,7 +51,7 @@ class Factory {
 //    }
 }
 
-class Log {
+class LogManager {
     func sendLog(_ logName: String) {
         print("\(logName) logged.")
     }
@@ -63,8 +63,8 @@ class Log {
     }
 }
 
-let bmwFactory = Factory()
-bmwFactory.addEmployee(EmployeeModel(name: "Erdem", surname: "Karakaya", jobTitle: "iOS DEVELOPER"))
-bmwFactory.updateEmployee(EmployeeModel(name: "Ülkü", surname: "Karakaya", jobTitle: "FULL STACK DEVELOPER"))
-bmwFactory.removeEmployee(EmployeeModel(name: "Deneme", surname: "Kullanıcısı", jobTitle: "Deneme"))
+let employeeManager = EmployeeManager()
+employeeManager.addEmployee(EmployeeModel(name: "Erdem", surname: "Karakaya", jobTitle: "iOS DEVELOPER"))
+employeeManager.updateEmployee(EmployeeModel(name: "Ülkü", surname: "Karakaya", jobTitle: "FULL STACK DEVELOPER"))
+employeeManager.removeEmployee(EmployeeModel(name: "Deneme", surname: "Kullanıcısı", jobTitle: "Deneme"))
 

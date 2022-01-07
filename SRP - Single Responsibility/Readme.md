@@ -10,31 +10,31 @@ Her class/methot 'a ait tek bir sorumluluk olmalıdır. Birden fazla soruna çö
 
 - Employee sınıfında hem employee sorumlulukları var, hemde loglama ile alakalı sorumluluklar var. Bu yüzden bu kullanım hatalı bir kullanımdır. Her sorumluluğun kendisine ait bir sınıfı olmalıdır.
 ```swift
-class  Factory {
+class  Employee {
 // MARK: - Employee İşlemleri
-	func addEmployee(_ employee: EmployeeModel) {
-		print("\(employee.name) Employee added for \(employee.jobTitle) jobTitle.")
-		Log().sendLog("Employee Add")
-	}
-	func removeEmployee(_ employee: EmployeeModel) {
-		print("\(employee.name) Employee removed from \(employee.jobTitle) jobTitle.")
-		Log().sendLog("Employee Remove")
-	}
-	func updateEmployee(_ employee: EmployeeModel) {
-		print("\(employee.name) Employee updated from \(employee.jobTitle) jobTitle.")
-		Log().sendLog("Employee Update")
-	}
+    func addEmployee(_ employee: EmployeeModel) {
+        print("\(employee.name) Employee added for \(employee.jobTitle) jobTitle.")
+        Log().sendLog("Employee Add")
+    }
+    func removeEmployee(_ employee: EmployeeModel) {
+        print("\(employee.name) Employee removed from \(employee.jobTitle) jobTitle.")
+        Log().sendLog("Employee Remove")
+    }
+    func updateEmployee(_ employee: EmployeeModel) {
+        print("\(employee.name) Employee updated from \(employee.jobTitle) jobTitle.")
+        Log().sendLog("Employee Update")
+    }
 
 // MARK: - Log İşlemleri
-	func sendLog(_ logName: String) {
-		print("\(logName) logged.")
-	}
-	func getLastLogs(_ count: Int) {
-		print("Last \(count) count is => ....")
-	}
-	func removeLog(withName name: String) {
-		print("\(name) Log removed.")
-	}
+    func sendLog(_ logName: String) {
+        print("\(logName) logged.")
+    }
+    func getLastLogs(_ count: Int) {
+        print("Last \(count) count is => ....")
+    }
+    func removeLog(withName name: String) {
+        print("\(name) Log removed.")
+    }
 }
 ```
 
@@ -50,48 +50,48 @@ class  Factory {
 
 
 ```swift
-struct  EmployeeModel {
-	var name: String
-	var surname: String
-	var jobTitle: String
+struct EmployeeModel {
+    var name: String
+    var surname: String
+    var jobTitle: String
 }
 
-class  Factory {
-	func addEmployee(_ employee: EmployeeModel) {
-		print("\(employee.name) Employee added for \(employee.jobTitle) jobTitle.")
-		Log().sendLog("Employee Add")
-	}
+class EmployeeManager {
+    func addEmployee(_ employee: EmployeeModel) {
+        print("\(employee.name) Employee added for \(employee.jobTitle) jobTitle.")
+        LogManager().sendLog("Employee Add")
+    }
 
-	func removeEmployee(_ employee: EmployeeModel) {
-		print("\(employee.name) Employee removed from \(employee.jobTitle) jobTitle.")
-		Log().sendLog("Employee Remove")
-	}
+    func removeEmployee(_ employee: EmployeeModel) {
+        print("\(employee.name) Employee removed from \(employee.jobTitle) jobTitle.")
+        LogManager().sendLog("Employee Remove")
+    }
 
-	func updateEmployee(_ employee: EmployeeModel) {
-		print("\(employee.name) Employee updated from \(employee.jobTitle) jobTitle.")
-		Log().sendLog("Employee Update")
-	}
+    func updateEmployee(_ employee: EmployeeModel) {
+        print("\(employee.name) Employee updated from \(employee.jobTitle) jobTitle.")
+        LogManager().sendLog("Employee Update")
+    }
 }
 
 
-class  Log {
-	func sendLog(_ logName: String) {
-		print("\(logName) logged.")
-	}
+class LogManager {
+    func sendLog(_ logName: String) {
+        print("\(logName) logged.")
+    }
 
-	func getLastLogs(_ count: Int) {
-		print("Last \(count) count is => ....")
-	}
+    func getLastLogs(_ count: Int) {
+        print("Last \(count) count is => ....")
+    }
 
-	func  removeLog(withName name: String) {
-		print("\(name) Log removed.")
-	}
+    func  removeLog(withName name: String) {
+        print("\(name) Log removed.")
+    }
 }
 
   
 
-let bmwFactory = Factory()
-bmwFactory.addEmployee(EmployeeModel(name: "Erdem", surname: "Karakaya", jobTitle: "iOS DEVELOPER"))
-bmwFactory.updateEmployee(EmployeeModel(name: "Ülkü", surname: "Karakaya", jobTitle: "FULL STACK DEVELOPER"))
-bmwFactory.removeEmployee(EmployeeModel(name: "Deneme", surname: "Kullanıcısı", jobTitle: "Deneme"))
+let employeeManager = EmployeeManager()
+employeeManager.addEmployee(EmployeeModel(name: "Erdem", surname: "Karakaya", jobTitle: "iOS DEVELOPER"))
+employeeManager.updateEmployee(EmployeeModel(name: "Ülkü", surname: "Karakaya", jobTitle: "FULL STACK DEVELOPER"))
+employeeManager.removeEmployee(EmployeeModel(name: "Deneme", surname: "Kullanıcısı", jobTitle: "Deneme"))
 ```
